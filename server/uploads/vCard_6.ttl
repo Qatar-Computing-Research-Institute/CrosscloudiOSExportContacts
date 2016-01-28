@@ -1,0 +1,21 @@
+@prefix vCard: <http://www.w3.org/2006/vcard/ns#> .
+
+<https://exportcontactsios.databox.me/Applications/contacts/vcard_2594C7C9-57FB-4646-A027-0FCE40DD9F18>
+	<vCard:hasUID> <https://exportcontactsios.databox.me>;
+	<vCard:a> <vCard:Individual> ;
+	<vCard:hasGivenName> "Hank" ;
+	<vCard:hasFamilyName> "Zakroff" ;
+	<vCard:hasTitle> "Portfolio Manager" ;
+	<vCard:hasOrganizationName> "Financial Services Inc." ;
+	<vCard:hasPhoto> <https://ghanemabdo.databox.me/profile/avatar.jpeg> ;
+	<vCard:hasEmail> <mailto:hank-zakroff@mac.com> ;
+	<vCard:hasTelephone> <tel:(555) 766-4823> ;
+	<vCard:hasTelephone> <tel:(707) 555-1854> ;
+	<vCard:hasAddress> [
+		<vCard:hasCountryName> "";
+		<vCard:hasRegion> "CA";
+		<vCard:hasLocality> "San Rafael";
+		<vCard:hasStreetAddress> "1741 Kearny Street";
+		<vCard:hasPostalCode> "94901";
+	] ;
+	<vCard:hasURL> <www.google.com> ;

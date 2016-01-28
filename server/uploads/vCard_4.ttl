@@ -1,0 +1,22 @@
+@prefix vCard: <http://www.w3.org/2006/vcard/ns#> .
+
+<https://exportcontactsios.databox.me/Applications/contacts/vcard_EF0759A5-7CA3-4C29-8EF3-1BF5319D00E0>
+	<vCard:hasUID> <https://exportcontactsios.databox.me>;
+	<vCard:a> <vCard:Individual> ;
+	<vCard:hasGivenName> "Daniel" ;
+	<vCard:hasFamilyName> "Higgins" ;
+	<vCard:hasHonorifixSuffix> "Jr." ;
+	<vCard:hasPhoto> <https://ghanemabdo.databox.me/profile/avatar.jpeg> ;
+	<vCard:hasEmail> <mailto:d-higgins@mac.com> ;
+	<vCard:hasTelephone> <tel:555-478-7672> ;
+	<vCard:hasTelephone> <tel:(408) 555-5270> ;
+	<vCard:hasTelephone> <tel:(408) 555-3514> ;
+	<vCard:hasAddress> [
+		<vCard:hasCountryName> "USA";
+		<vCard:hasRegion> "CA";
+		<vCard:hasLocality> "Corte Madera";
+		<vCard:hasStreetAddress> "332 Laguna Street";
+		<vCard:hasPostalCode> "94925";
+	] ;
+	<vCard:hasURL> <www.google.com> ;
+	<vCard:hasNote> "Sister: Emily" ;

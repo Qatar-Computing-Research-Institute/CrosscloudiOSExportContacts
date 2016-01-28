@@ -1,0 +1,28 @@
+@prefix vCard: <http://www.w3.org/2006/vcard/ns#> .
+
+<https://exportcontactsios.databox.me/Applications/contacts/vcard_92740468-089C-4064-AB2E-B73DF0C644F5>
+	<vCard:hasUID> <https://exportcontactsios.databox.me>;
+	<vCard:a> <vCard:Individual> ;
+	<vCard:hasGivenName> "John" ;
+	<vCard:hasFamilyName> "Appleseed" ;
+	<vCard:hasPhoto> <https://ghanemabdo.databox.me/profile/avatar.jpeg> ;
+	<vCard:hasEmail> <mailto:John-Appleseed@mac.com> ;
+	<vCard:hasTelephone> <tel:888-555-5512> ;
+	<vCard:hasTelephone> <tel:888-555-1212> ;
+	<vCard:hasAddress> [
+		<vCard:hasCountryName> "USA";
+		<vCard:hasRegion> "GA";
+		<vCard:hasLocality> "Atlanta";
+		<vCard:hasStreetAddress> "3494 Kuhl Avenue";
+		<vCard:hasPostalCode> "30303";
+	] ;
+	<vCard:hasAddress> [
+		<vCard:hasCountryName> "USA";
+		<vCard:hasRegion> "GA";
+		<vCard:hasLocality> "Atlanta";
+		<vCard:hasStreetAddress> "1234 Laurel Street";
+		<vCard:hasPostalCode> "30303";
+	] ;
+	<vCard:hasURL> <www.google.com> ;
+	<vCard:hasNote> "College roommate" ;
+	<vCard:bday> "1980-06-22 03:00:00" ;

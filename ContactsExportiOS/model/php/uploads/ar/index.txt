@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form action="FormGenerator.php" method="POST">
+		Display options as:
+		<input type="radio" name="radio" value="Mutual" /> Mutual
+		<input type="radio" name="radio" value="Independent" checked="checked" /> Independent
+
+		<input type="submit" name="submitFormType" value="Submit" />
+</form>
+</body>
+</html>

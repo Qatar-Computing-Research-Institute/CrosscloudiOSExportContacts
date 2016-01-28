@@ -1,0 +1,20 @@
+@prefix vCard: <http://www.w3.org/2006/vcard/ns#> .
+
+<https://exportcontactsios.databox.me/Applications/contacts/vcard_D9C35E8F-1E73-4B2E-98AE-BAE5F0CC8634>
+	<vCard:hasUID> <https://exportcontactsios.databox.me>;
+	<vCard:a> <vCard:Individual> ;
+	<vCard:hasGivenName> "Anna" ;
+	<vCard:hasFamilyName> "Haro" ;
+	<vCard:hasNickname> "Annie" ;
+	<vCard:hasPhoto> <https://ghanemabdo.databox.me/profile/avatar.jpeg> ;
+	<vCard:hasEmail> <mailto:anna-haro@mac.com> ;
+	<vCard:hasTelephone> <tel:555-522-8243> ;
+	<vCard:hasAddress> [
+		<vCard:hasCountryName> "USA";
+		<vCard:hasRegion> "CA";
+		<vCard:hasLocality> "Sausalito";
+		<vCard:hasStreetAddress> "1001  Leavenworth Street";
+		<vCard:hasPostalCode> "94965";
+	] ;
+	<vCard:hasURL> <www.google.com> ;
+	<vCard:bday> "1985-08-29 03:00:00" ;

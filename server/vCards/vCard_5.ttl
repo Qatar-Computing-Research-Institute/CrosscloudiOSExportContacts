@@ -1,0 +1,21 @@
+@prefix vCard: <http://www.w3.org/2006/vcard/ns#> .
+
+<https://exportcontactsios.databox.me/Applications/contacts/vcard_19D3E99E-11D4-437A-A533-6A6AD25EE472>
+	<vCard:hasUID> <https://exportcontactsios.databox.me>;
+	<vCard:a> <vCard:Individual> ;
+	<vCard:hasGivenName> "David" ;
+	<vCard:hasFamilyName> "Taylor" ;
+	<vCard:hasPhoto> <https://ghanemabdo.databox.me/profile/avatar.jpeg> ;
+	<vCard:hasEmail> <mailto:www.google.com> ;
+	<vCard:hasTelephone> <tel:555-610-6679> ;
+	<vCard:hasAddress> [
+		<vCard:hasCountryName> "USA";
+		<vCard:hasRegion> "CA";
+		<vCard:hasLocality> "Tiburon";
+		<vCard:hasStreetAddress> "1747 Steuart Street";
+		<vCard:hasPostalCode> "94920";
+	] ;
+	<vCard:hasURL> <www.google.com> ;
+	<vCard:hasNote> "Plays on Cole's Little League Baseball Team
+" ;
+	<vCard:bday> "1998-06-15 03:00:00" ;

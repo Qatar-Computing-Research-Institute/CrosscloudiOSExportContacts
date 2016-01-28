@@ -1,0 +1,110 @@
+// recursive
+
+public Node beginAddingLists(Node l1 , Node l2)
+{
+	int length1 = length ( l1 ) ;
+	int length2 = length ( l2 ) ;
+	
+	if ( length1 < length2 )
+		l1 = padList ( l1 , (length2 - length1) ) ;
+	else
+		l2 = padList ( l2 , (length1 - length2) ) ;
+		
+	Node result = null ;
+	
+	addList ( l1 , l2 , result ) ;
+	
+	return result ;
+}
+
+public Node padList(Node l , int length )
+{
+	Node current = l ;
+	
+	for ( int i = 0 ; i < length ; i++ )
+	{
+		Node n = new Node(0) ;
+		n.next = current ;
+		current = n ;
+	}
+	
+	return current ;
+}
+
+public int addList ( Node l1 , Node l2 , Node result)
+{
+	if ( l1 == null && l2 == null )
+		return 0 ;
+	
+	int sum = 0 ;
+	int carry = 0 ;
+	
+	carry = addList ( (l1 == null)? null: l1.next , (l2 == null)? null:l2.next ) ;
+		
+	sum = carry ;
+		
+	if ( l1 != null )
+		sum += l1.data ;
+		
+	if ( l2 != null )
+		sum += l2.data ;
+	
+	Node newTerm = new Node (sum % 10) ;
+	newTerm.next = result ;
+	result = newTerm ;
+	
+	carry = sum / 10 ;
+	
+	return carry ;
+}
+
+//iterative
+public Node addList( Node l1 , Node l2 )
+{
+	Stack l1Stack = new Stack() ;
+	Stack l2Stack = new Stack() ;
+	
+	while ( l1 != null || l2 != null )
+	{
+		if ( l1 != null )
+		{
+			l1Stack.push ( l1 ) ;
+			l1 = l1.next ;
+		}
+		
+		if ( l2 != null )
+		{
+			l2Stack.push ( l2 ) ;
+			l2 = l2.next ;
+		}
+	}
+	
+	int carry = 0 ;
+	int sum = 0 ;
+	Node result = null ;
+	
+	while ( l1Stack.isEmpty() != false || l2Stack.isEmpty() != false )
+	{
+		sum = carry ;
+		
+		if ( l1Stack.isEmpty() != false )
+		{
+			Node n1 = l1Stack.pop() ;
+			sum += n1.data ;
+		}
+		
+		if ( (l2Stack.isEmpty() != false )
+		{
+			Node n2 = l2Stack.pop() ;
+			sum += n2.data ;
+		}
+		
+		Node newTerm = new Node ( sum % 10 ) ;
+		newTerm.next = result ;
+		result = newTerm ;
+		
+		carry = sum / 10 ;
+	}
+	
+	return result ;
+}

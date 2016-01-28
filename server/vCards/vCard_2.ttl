@@ -1,0 +1,10 @@
+@prefix vCard: <http://www.w3.org/2006/vcard/ns#> .
+
+<https://exportcontactsios.databox.me/Applications/contacts/vcard_37A515D7-A51C-40A9-ADF2-B20898CCFBDC:ABPerson>
+	<vCard:hasUID> <https://exportcontactsios.databox.me>;
+	<vCard:a> <vCard:Individual> ;
+	<vCard:hasGivenName> "John" ;
+	<vCard:hasFamilyName> "goal" ;
+	<vCard:hasPhoto> <https://ghanemabdo.databox.me/profile/avatar.jpeg> ;
+	<vCard:hasEmail> <mailto:www.google.com> ;
+	<vCard:bday> "2015-12-23 03:00:00" ;

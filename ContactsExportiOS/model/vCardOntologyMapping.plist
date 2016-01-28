@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>namePrefix</key>
+	<string>hasHonorificPrefix</string>
+	<key>givenName</key>
+	<string>hasGivenName</string>
+	<key>middleName</key>
+	<string>hasAdditionalName</string>
+	<key>familyName</key>
+	<string>hasFamilyName</string>
+	<key>previousFamilyName</key>
+	<string></string>
+	<key>nameSuffix</key>
+	<string>hasHonorifixSuffix</string>
+	<key>nickname</key>
+	<string>hasNickname</string>
+	<key>phoneticGivenName</key>
+	<string></string>
+	<key>phoneticMiddleName</key>
+	<string></string>
+	<key>phoneticFamilyName</key>
+	<string></string>
+	<key>organizationName</key>
+	<string>hasOrganizationName</string>
+	<key>departmentName</key>
+	<string></string>
+	<key>jobTitle</key>
+	<string>hasTitle</string>
+	<key>birthday</key>
+	<string>bday</string>
+	<key>nonGregorianBirthday</key>
+	<string></string>
+	<key>note</key>
+	<string>hasNote</string>
+	<key>imageData</key>
+	<string></string>
+	<key>thumbnailImageData</key>
+	<string></string>
+	<key>imageDataAvailable</key>
+	<string></string>
+	<key>contactType</key>
+	<string>a</string>
+	<key>phoneNumbers</key>
+	<string>hasTelephone</string>
+	<key>emailAddresses</key>
+	<string>hasEmail</string>
+	<key>postalAddresses</key>
+	<string>hasAddress</string>
+	<key>dates</key>
+	<string></string>
+	<key>urlAddresses</key>
+	<string>hasURL</string>
+	<key>contactRelations</key>
+	<string>RelatedType</string>
+	<key>socialProfiles</key>
+	<string></string>
+	<key>instantMessageAddresses</key>
+	<string>hasInstantMessage</string>
+</dict>
+</plist>

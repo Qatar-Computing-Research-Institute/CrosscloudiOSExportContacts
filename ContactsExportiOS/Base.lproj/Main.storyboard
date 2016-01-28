@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UgZ-Dd-fEX">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--All Contacts-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="AllContactsViewController" customModule="ContactsExportiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AUV-de-8Kf">
+                                <rect key="frame" x="20" y="64" width="560" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="XOR-Rg-hbC"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="d04-Ak-dDM"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AUV-de-8Kf" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="DeZ-cj-CJN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AUV-de-8Kf" secondAttribute="bottom" constant="8" symbolic="YES" id="RaK-th-Qfb"/>
+                            <constraint firstItem="AUV-de-8Kf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bCm-ra-l6x"/>
+                            <constraint firstItem="AUV-de-8Kf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="hda-LL-Znb"/>
+                            <constraint firstItem="AUV-de-8Kf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jnT-EG-fc1"/>
+                            <constraint firstItem="AUV-de-8Kf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="rwu-w2-Ln3"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="rwu-w2-Ln3"/>
+                                <exclude reference="RaK-th-Qfb"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="All Contacts" id="sEk-7z-qhO"/>
+                    <connections>
+                        <outlet property="table" destination="AUV-de-8Kf" id="x5N-Eb-bHs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1064" y="1080"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hOG-IZ-h8z">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UgZ-Dd-fEX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JLq-K7-d68">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qOE-Nt-gEm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KNU-Zn-IYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="364" y="1089"/>
+        </scene>
+    </scenes>
+</document>

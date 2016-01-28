@@ -1,0 +1,23 @@
+@prefix vCard: <http://www.w3.org/2006/vcard/ns#> .
+
+<https://exportcontactsios.databox.me/Applications/contacts/vcard_EE6761EB-17A0-42C8-993D-F1E1B118B7D0>
+	<vCard:hasUID> <https://exportcontactsios.databox.me>;
+	<vCard:a> <vCard:Individual> ;
+	<vCard:hasGivenName> "Kate" ;
+	<vCard:hasFamilyName> "Bell" ;
+	<vCard:hasTitle> "Producer" ;
+	<vCard:hasOrganizationName> "Creative Consulting" ;
+	<vCard:hasPhoto> <https://ghanemabdo.databox.me/profile/avatar.jpeg> ;
+	<vCard:hasEmail> <mailto:kate-bell@mac.com> ;
+	<vCard:hasEmail> <mailto:www.icloud.com> ;
+	<vCard:hasTelephone> <tel:(555) 564-8583> ;
+	<vCard:hasTelephone> <tel:(415) 555-3695> ;
+	<vCard:hasAddress> [
+		<vCard:hasCountryName> "";
+		<vCard:hasRegion> "CA";
+		<vCard:hasLocality> "Hillsborough";
+		<vCard:hasStreetAddress> "165 Davis Street";
+		<vCard:hasPostalCode> "94010";
+	] ;
+	<vCard:hasURL> <www.google.com> ;
+	<vCard:bday> "1978-01-20 03:00:00" ;
