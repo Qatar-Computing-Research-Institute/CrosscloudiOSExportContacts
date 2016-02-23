@@ -20,6 +20,8 @@ class ContactsExporter {
         Utilities.performAsynch(QOS_CLASS_DEFAULT)
         {
             let documentDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+            let newDir = documentDir.stringByAppendingString("/vCards/")
+            let _ = try? NSFileManager.defaultManager().createDirectoryAtPath(newDir , withIntermediateDirectories: false , attributes: nil)
             let vCardOntologyPath = NSBundle.mainBundle().pathForResource("vCardOntologyMapping", ofType: "plist")
             
 //            let _ = try? vcards?.writeToFile(documentDir + "/vCards.ttl" , atomically: true , encoding: NSUTF8StringEncoding)
@@ -31,10 +33,10 @@ class ContactsExporter {
                 //            if let vcardData = self.getvCardRepresentationForContacts([contact])
                 //            {
                 let vcard = contact.turtlize(vCardOntologyPath! , ContactWebID: webID , imageURL: "https://ghanemabdo.databox.me/profile/avatar.jpeg")
-                let path = documentDir + "/vCard_" + String(index++) + ".ttl"
+                let path = documentDir + "/vCards/vCard_" + String(index++) + ".ttl"
                 let _ = try? vcard?.writeToFile(path , atomically: true , encoding: NSUTF8StringEncoding)
                 
-                if let url = NSURL(string:"http://localhost:8080/SwiftUploadFile/receiveFile.php")
+                if let url = NSURL(string:"http://qcrikpi.qcri.org/importContacts/receiveFile.php")
                 {
                     self.fileUploader.UploadFile(url , filePath: NSURL(fileURLWithPath: path) , fileData: vcard , fileName: "vCard_" + String(index-1) + ".ttl")
                     {
@@ -55,6 +57,26 @@ class ContactsExporter {
                 //                    }
                 //                })
                 //            }
+            }
+            
+            let path = documentDir + "/" + webID.stringByReplacingOccurrencesOfString("/" , withString: "") + "_vcards.zip"
+            
+            if (NSFileManager.defaultManager().fileExistsAtPath(path))
+            {
+                let _ = try? NSFileManager.defaultManager().removeItemAtPath(path)
+            }
+            
+            ZipArchive.createZipFileAtPath(path , withContentsOfDirectory: newDir)
+            
+            let data = NSData(contentsOfFile: path)
+            
+            if let url = NSURL(string:"http://qcrikpi.qcri.org/importContacts/receiveFile.php")
+            {
+                self.fileUploader.UploadData(url , filePath: NSURL(fileURLWithPath: path) , fileData: data , fileName: "cards.zip")
+                {
+                        (dataObj , success) in
+                        
+                }
             }
         }
     }

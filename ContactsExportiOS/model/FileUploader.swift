@@ -74,6 +74,80 @@ public class FileUploader {
         task.resume()
     }
     
+    public func UploadData(serverURL: NSURL, filePath: NSURL, fileData:NSData? , fileName: String, _ aHandler: CompletionHandler?) -> Void {
+        let cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData
+        let request = NSMutableURLRequest(URL: serverURL, cachePolicy: cachePolicy, timeoutInterval: 2.0)
+        request.HTTPMethod = "POST"
+        
+        // Set Content-Type in HTTP header.
+        let boundaryConstant = boundaryGenerator()//"Boundary-7MA4YWxkTLLu0UIW"; // This should be auto-generated.
+        let contentType = "multipart/form-data; boundary=" + (boundaryConstant as String)
+        
+        let fileName = filePath.lastPathComponent!
+        let mimeType = "text/txt"
+        
+        request.setValue(contentType, forHTTPHeaderField: "Content-Type")
+        
+        // Set data
+        let mutableData = NSMutableData();
+        var dataString = "--\(boundaryConstant)\r\n"
+        dataString += "Content-Disposition: form-data; name=\"fileUpload\"; filename=\"\(fileName)\"\r\n"
+        dataString += "Content-Type: \(mimeType)\r\n\r\n"
+        
+        mutableData.appendData((dataString as NSString).dataUsingEncoding(NSUTF8StringEncoding)!)
+        
+        var data = fileData
+        if data == nil
+        {
+            do {
+                data = NSData(contentsOfFile: fileName)
+            }catch
+            {
+                
+            }
+            
+            if data == nil
+            {
+                return
+            }
+        }
+        
+        mutableData.appendData(data!)
+//        dataString += data!
+        dataString = "\r\n"
+        dataString += "--\(boundaryConstant)--\r\n"
+        
+        mutableData.appendData((dataString as NSString).dataUsingEncoding(NSUTF8StringEncoding)!)
+        
+//        print(dataString) // This would allow you to see what the dataString looks like.
+        
+        // Set the HTTPBody we'd like to submit
+        let requestBodyData = mutableData
+        request.HTTPBody = requestBodyData
+        
+        // Make an asynchronous call so as not to hold up other processes.
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let task = session.dataTaskWithRequest(request , completionHandler: {
+            
+            (data , response , error) -> Void in
+            
+            if let res = response as? NSHTTPURLResponse
+            {
+                print("status code: " + String(res.statusCode))
+                print("data is: " + String(data: data! , encoding: NSUTF8StringEncoding)!)
+            }
+            
+            if let _ = error {
+                aHandler?(obj: error, success: false)
+            } else {
+                aHandler?(obj: data, success: true)
+            }
+            
+        })
+        
+        task.resume()
+    }
+    
     private func boundaryGenerator() -> NSString
     {
         var boundary = ""
