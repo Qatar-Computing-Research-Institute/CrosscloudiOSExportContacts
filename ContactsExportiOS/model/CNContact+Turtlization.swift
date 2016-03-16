@@ -18,10 +18,10 @@ extension CNContact: Turtlizer
             let vcardURI = webid + "/Applications/contacts/vcard_" + self.identifier
             var contactRDF = "@prefix vCard: <http://www.w3.org/2006/vcard/ns#> .\n\n" +
                             "<" + vcardURI + ">\n" +
-                            "\t<vCard:hasUID> <" + webid + ">;\n"
+                            "\tvCard:hasUID <" + webid + ">;\n"
             
             //contact type
-            contactRDF += appendTriple(ontologyDict , contactItemKey: CNContactTypeKey, itemPrefix: "<vCard:" , contactItem: self.contactType.stringValue().capitalizedString , itemSuffix: ">")
+            contactRDF += appendTriple(ontologyDict , contactItemKey: CNContactTypeKey, itemPrefix: "vCard:" , contactItem: self.contactType.stringValue().capitalizedString , itemSuffix: "")
             
             //name
             contactRDF += appendTriple(ontologyDict , contactItemKey: CNContactGivenNameKey , itemPrefix: "\"" , contactItem: self.givenName , itemSuffix: "\"")
@@ -37,7 +37,7 @@ extension CNContact: Turtlizer
             //photo
             if imageURL.characters.count > 0
             {
-                contactRDF += "\t<vCard:hasPhoto> <" + imageURL + "> ;\n"
+                contactRDF += "\tvCard:hasPhoto <" + imageURL + ">;\n"
             }
             
             //emails
@@ -88,7 +88,7 @@ extension CNContact: Turtlizer
                 {
                     if ci.characters.count > 0
                     {
-                        return "\t<vCard:" + ontologyTerm +  "> " + itemPrefix + ci + itemSuffix + " ;\n"
+                        return "\tvCard:" + ontologyTerm +  " " + itemPrefix + ci + itemSuffix + " ;\n"
                     }
                 }
                 else if let ci = contactItem as? [CNLabeledValue]
@@ -99,38 +99,38 @@ extension CNContact: Turtlizer
                     {
                         if let value = labelValue.value as? String  //email addresses and instant messaging addresses
                         {
-                            resultRDF += "\t<vCard:" + ontologyTerm +  "> " + itemPrefix + value + itemSuffix + " ;\n"
+                            resultRDF += "\tvCard:" + ontologyTerm +  " " + itemPrefix + value + itemSuffix + " ;\n"
                         }
                         else if let value = labelValue.value as? CNPhoneNumber
                         {
-                            resultRDF += "\t<vCard:" + ontologyTerm +  "> " + itemPrefix + value.stringValue + itemSuffix + " ;\n"
+                            resultRDF += "\tvCard:" + ontologyTerm +  " " + itemPrefix + value.stringValue + itemSuffix + " ;\n"
                         }
                         else if let value = labelValue.value as? CNPostalAddress
                         {
-                            resultRDF += "\t<vCard:" + ontologyTerm +  "> [\n" +
-                                "\t\t<vCard:hasCountryName> \"" + value.country + "\";\n" +
-                                "\t\t<vCard:hasRegion> \"" + value.state + "\";\n" +
-                                "\t\t<vCard:hasLocality> \"" + value.city + "\";\n" +
-                                "\t\t<vCard:hasStreetAddress> \"" + value.street + "\";\n" +
-                                "\t\t<vCard:hasPostalCode> \"" + value.postalCode + "\";\n" +
+                            resultRDF += "\tvCard:" + ontologyTerm +  " [\n" +
+                                "\t\tvCard:hasCountryName \"" + value.country + "\";\n" +
+                                "\t\tvCard:hasRegion \"" + value.state + "\";\n" +
+                                "\t\tvCard:hasLocality \"" + value.city + "\";\n" +
+                                "\t\tvCard:hasStreetAddress \"" + value.street + "\";\n" +
+                                "\t\tvCard:hasPostalCode \"" + value.postalCode + "\";\n" +
                                 "\t] ;\n"
                         }
                         else if let value = labelValue.value as? CNInstantMessageAddress
                         {
-                            resultRDF += "\t<vCard:" + ontologyTerm +  "> " + itemPrefix + value.username + itemSuffix + " ;\n"
+                            resultRDF += "\tvCard:" + ontologyTerm +  " " + itemPrefix + value.username + itemSuffix + " ;\n"
                         }
                         else if let value = labelValue.value as? CNContactRelation
                         {
-                            resultRDF = "\t<vCard:" + ontologyTerm +  "> " + itemPrefix + value.name + itemSuffix + " ;\n"
+                            resultRDF = "\tvCard:" + ontologyTerm +  " " + itemPrefix + value.name + itemSuffix + " ;\n"
                         }
 //                        else if let value = labelValue.value as? CNSocialProfile
 //                        {
-//                            let resultRDF = "<vCard:" + ontologyTerm +  "> [" +
-//                                "<vCard:hasCountryName> \"" + value.country + "\";\n" +
-//                                "<vCard:hasRegion> \"" + value.state + "\";\n" +
-//                                "<vCard:hasLocality> \"" + value.city + "\";\n" +
-//                                "<vCard:hasStreetAddress> \"" + value.street + "\";\n" +
-//                                "<vCard:hasPostalCode> \"" + value.postalCode + "\";\n" +
+//                            let resultRDF = "vCard:" + ontologyTerm +  " [" +
+//                                "vCard:hasCountryName \"" + value.country + "\";\n" +
+//                                "vCard:hasRegion \"" + value.state + "\";\n" +
+//                                "vCard:hasLocality \"" + value.city + "\";\n" +
+//                                "vCard:hasStreetAddress \"" + value.street + "\";\n" +
+//                                "vCard:hasPostalCode \"" + value.postalCode + "\";\n" +
 //                            "] ;\n"
 //                            return resultRDF
 //                        }
@@ -145,7 +145,7 @@ extension CNContact: Turtlizer
                     if ci.isValidDateInCalendar(NSCalendar.currentCalendar())
                     {
                         let dateString = dateFormatter.stringFromDate(ci.date!)
-                        return "\t<vCard:" + ontologyTerm +  "> " + itemPrefix + dateString + itemSuffix + " ;\n"
+                        return "\tvCard:" + ontologyTerm +  " " + itemPrefix + dateString + itemSuffix + " ;\n"
                     }
                 }
             }

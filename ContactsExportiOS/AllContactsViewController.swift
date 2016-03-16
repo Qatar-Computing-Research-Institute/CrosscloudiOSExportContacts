@@ -13,11 +13,12 @@ import ContactsUI
 class AllContactsViewController: UIViewController , UITableViewDelegate , UITableViewDataSource , UIAlertViewDelegate {
     
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var loadingView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save , target: self , action: "exportContacts")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Export", style: UIBarButtonItemStyle.Plain, target: self, action: "exportContacts")
         
         ContactsManager.readAllContacts
         { (success: Bool) -> Void in
@@ -153,15 +154,21 @@ class AllContactsViewController: UIViewController , UITableViewDelegate , UITabl
     }
     
     private var podUrlTextField: UITextField?
+    private var uploadURL: UITextField?
     
     func exportContacts()
     {
         let alertView = UIAlertController(title: "Export Contacts", message: "Enter your pod url", preferredStyle: UIAlertControllerStyle.Alert)
         alertView.addAction(UIAlertAction(title: "Export" , style: UIAlertActionStyle.Default , handler: {(alertView) -> Void in
             
-            if let podURL = self.podUrlTextField?.text
+            if let exportURL = self.uploadURL?.text
             {
-                ContactsManager.contactsExporter.exportContacts(podURL)
+                if let podURL = self.podUrlTextField?.text
+                {
+                    ContactsManager.contactsExporter.exportContacts(podURL , exportURL: exportURL)
+                    ContactsManager.contactsExporter.delegate = self;
+                    self.loadingView.hidden = false
+                }
             }
         }))
         
@@ -169,11 +176,23 @@ class AllContactsViewController: UIViewController , UITableViewDelegate , UITabl
         alertView.addTextFieldWithConfigurationHandler({(textField) -> Void in
                 
             textField.placeholder = "Enter your pod URL"
-            textField.text = "https://exportcontactsios.databox.me"
+            textField.text = "https://ghanemabdo.databox.me"
             self.podUrlTextField = textField
         })
         
+        alertView.addTextFieldWithConfigurationHandler({(textField) -> Void in
+            
+            textField.placeholder = "Enter the export destination URL"
+            textField.text = "http://localhost:8080/importContacts/receiveFile.php"
+            self.uploadURL = textField
+        })
+        
         self.presentViewController(alertView , animated: true , completion: nil)
+    }
+    
+    func showLoading(visible: Bool)
+    {
+        self.loadingView.hidden = !visible
     }
 }
 

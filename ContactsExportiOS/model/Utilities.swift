@@ -27,6 +27,11 @@ struct Utilities {
         })
     }
     
+    static func performSynch( closure: () -> () )
+    {
+        dispatch_async(dispatch_get_main_queue() , closure)
+    }
+    
     static func synced(lock: AnyObject, closure: () -> ()) {
         objc_sync_enter(lock)
         closure()
